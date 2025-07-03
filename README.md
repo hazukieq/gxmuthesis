@@ -16,6 +16,14 @@
 
 项目中示例内容均来自**央视网新闻**的部分截取，详情请查阅:[分子之心获数亿元A轮融资 将加快AI生物基础设施建设](https://opinion.cctv.com/2024/09/13/ARTIBJtW5D7Z6oYfhpQyAdLD240913.shtml?spm=C88965.P72990804435.S08478.10),[10.26万亿元、200亿元，利好积聚！“数”里行间透视中国经济活力](https://news.cctv.com/2025/06/05/ARTIak5G4TuHgmOXq2I89J5S250605.shtml)，在项目中相关文本段仅作为学习演示目的，未对原文内容进行修改。
 
+#### 示例封面
+
+[示例 PDF 版本预览链接](https://www.hazukieq.top/txt/gxmu_thesis_sample.pdf)
+
+<img style="border: 1px solid black;" src="./图片/gxmuthesis_cover.png"/>
+
+---
+
 #### 获取途径
 
 1. 点击 右侧 **Github Release** 获取压缩包
@@ -25,10 +33,9 @@
 git clone https://github.com/hazukieq/gxmuthesis.git
 ```
 
-3 通过 Overleaf/TexPage 进行线上编辑编译，由于现在Github导入是付费功能，故请下载压缩包后上传到Overleaf上。
-
-- [Overleaf 分享链接](  https://www.overleaf.com/read/shmyqrqjvbrj#9dc02b)
-- [TexPage 分享链接](https://www.texpage.com/share/93554ce214384667a8e03ce5ad556752)
+3. 通过 Overleaf/TexPage 进行线上编辑编译，由于现在Github导入是付费功能，故请下载压缩包后上传到Overleaf上。
+   - [Overleaf 分享链接](  https://www.overleaf.com/read/shmyqrqjvbrj#9dc02b)
+   - [TexPage 分享链接](https://www.texpage.com/share/93554ce214384667a8e03ce5ad556752)
 
 **编译时务必选择 xelatex，若用pdflatex等则会出现编译失败的可能！！多数编辑器默认使用pdflatex等，需要提前变更为 xelatex 以支援中文**
 
