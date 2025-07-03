@@ -47,6 +47,8 @@ git clone https://github.com/hazukieq/gxmuthesis.git
 
 
 
+
+
 2 打开文件夹，你需要重点关注以下文件夹：基础信息，论文主题，参考文献，论文致谢，手写签名。
 
 ![image-20250703233339369](./图片/folders_shot.png)
@@ -67,9 +69,15 @@ git clone https://github.com/hazukieq/gxmuthesis.git
 
 
 
+
+
 3 按 **[基础信息.tex>论文.tex>参考文献.bib>致谢.tex>手写签名]** 步骤打开文件，并对内容进行修改。推荐每编辑一次，重新编译一次，确认相关改动是否符合。**⚠️注意：想要看到目录内容变更，需要编译两次！！！想要看到引用文献变更，请编译三次！！！**
 
 4 编译完成后，在文件夹中会有**毕业论文.pdf**，请用阅读器打开查看效果。
+
+5 仔细阅读 **[关于论文LaTeX的一些使用细节](./simple_tutorial.md)**
+
+
 
 
 

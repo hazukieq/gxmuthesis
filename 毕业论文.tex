@@ -3,13 +3,12 @@
 % 因此四号字体则为14pt,则基础行间距为14*1.3=18.2
 % 欲设置行间距固定值 26 pt，则26/18.2，约为1.423倍
 \documentclass[a4paper, twoside, UTF-8,14pt]{ctexart}
-\input{基础信息/基础信息} %引入基础信息
-
 \usepackage{xeCJK}%支持中文的拓展包
 \usepackage{fontspec}[no-math] % 用于字体选择
 \usepackage{graphicx} %图像
-
 \usepackage{etoolbox} %条件控制
+
+\input{基础信息/基础信息} %引入基础信息
 
 \newbool{isHumanities} % 文科管理类
 \setbool{isHumanities}{\isHMThesis} % 设置为 true 或 false
@@ -258,7 +257,7 @@ headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 	\titleformat{\subsubsection}{\zihao{4}\heiti}{\thesubsubsection}{0.5em}{}
 	%4级标题
 	%理工科类
-	\newcommand{\smallTiltle}[1]{\par\zihao{4}\songti\hspace{1em} #1 \par}
+	\newcommand{\smallTiltle}[2]{\par\zihao{4}\songti#1\hspace{0.5em} #2 \par}
 	
 }
 %各级标题的段前段后行间距设置
