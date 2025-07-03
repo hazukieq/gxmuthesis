@@ -1,0 +1,78 @@
+\documentclass[a4paper, UTF-8,14pt]{ctexart}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\begin{document}
+	\begin{itemize}
+		\item 第一项
+		\item 第二项
+		\item 第三项
+	\end{itemize}
+	
+	\section*{有序列表}
+	\begin{enumerate}
+		\item 第一项
+		\item 第二项
+		\item 第三项
+	\end{enumerate}
+	
+	\section*{描述列表}
+	\begin{description}
+		\item[第一项] 这是第一项的描述。
+		\item[第二项] 这是第二项的描述。
+		\item[第三项] 这是第三项的描述。
+	\end{description}
+	
+	\section*{嵌套列表}
+	\begin{enumerate}
+		\item 第一项
+		\item 第二项
+		\begin{itemize}
+			\item 子项一
+			\item 子项二
+		\end{itemize}
+		\item 第三项
+	\end{enumerate}
+	
+	\section*{自定义无序列表}
+	\begin{itemize}[label=\textbullet] % 使用圆点符号
+		\item 第一项
+		\item 第二项
+		\item 第三项
+	\end{itemize}
+	
+	
+	\section*{其他类列表}
+	\begin{enumerate}[label=(\Roman*)]
+		\item 大写罗马字母+小括号1
+		\item 大写罗马字母+小括号2 
+	\end{enumerate}
+	
+	\begin{enumerate}[label=\heiti\chinese*、]
+		\item 黑体中文编号一、
+		\item 黑体中文编号二、
+	\end{enumerate}
+	
+	\begin{enumerate}[label=\heiti\arabic*、]
+		\item 黑体中文编号1、
+		\item 黑体中文编号2、
+	\end{enumerate}
+	
+	\begin{enumerate}[A.]
+		\item 第一项内容
+		\item 第二项内容
+	\end{enumerate}
+	
+	\begin{enumerate}[\heiti a.]
+		\item 第一项内容
+		\item 第二项内容
+	\end{enumerate}
+
+	\section*{调整间距}
+	\noindent itemsep 控制各项之间的垂直距离。\\
+	topsep 控制列表与周围文本之间的距离。
+	\begin{itemize}[itemsep=-0.4em,topsep=0pt,parsep=0pt]
+		\item item1
+		\item item2
+		\item item3
+	\end{itemize}
+\end{document}

@@ -1,0 +1,63 @@
+%声明标题
+\declare{声\hspace{1em}明}
+本人声明所呈交的毕业论文（设计）是本人在指导老师的指导下完成的工作。据我所知，除了文中特别加以标注和致谢的地方外，文中不包含其他人已经发表或撰写过的研究成果。与我一同工作的同志对本课题所做的任何贡献均已在文中作了明确的说明并表示谢意。
+\newline
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+	
+	%&\tsign{}
+	%\\[13pt]
+	%&\tmpdate\\
+
+	%实际填写时，把上面的注释掉
+	%&\asign{名字}\\[13pt]
+	%&\signdate{2025}{5}{15}\\
+
+	%手写签名
+	&\tsign{\hwrite{\asignWidth}{\ahwrite}}
+	\\[13pt]
+	&\signdate{\asignY}{\asignM}{\asignD}\\
+\end{tabular*}
+\end{table}
+
+%画虚线
+\begin{tikzpicture}
+\draw[dash pattern=on 2pt off 3pt on 2pt](0,0.5 \textheight)--(\textwidth,0.5\textheight);
+\end{tikzpicture}
+
+\vspace{26pt}
+\declare{学位论文版权使用授权书}
+本学位论文作者完全了解学校有关保留、使用学位论文的规定，即：在校期间论文的知识产权属广西医科大学。学校有权保存论文的电子和纸质文档，可以借阅或上网公布本论文的部分或全部内容，可以采用影印、复印或其它手段保存、汇编本论文，学校可以向国家有关机关或机构送交论文的电子和纸质文档，允许论文被查阅和借阅。同意广西医科大学可以用不同方式在不同媒体上发表、传播学位论文的全部或部分内容。保密论文在解密后遵守此规定。
+\newline
+
+%说明
+%写实际作者签名
+%\tasign{名字}
+%写导师签名
+%\tmsign{名字}
+%填写日期
+%\signdate{年}{月}{日}
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+        
+        %\asign{}& \msign{}\\[13pt]
+        %\tmpdate& \tmpdate\\
+
+        %实际填写时用这个，然后把上面\tbox开头的都注释掉去
+        %\asign{你的姓名}& \msign{导师姓名}
+        %\\[13pt]
+        %\signdate{2025}{5}{15}& %\signdate{2025}{5}{15}\\
+
+        %手写签名
+        %\hwrite{图片宽度}{图片路径}
+        \asign{\hwrite{\asignWidth}{\ahwrite}}&
+        \msign{\hwrite{\msignWidth}{\mhwrite}}
+        \\[13pt]
+        \signdate{\asignY}{\asignM}{\asignD}&
+        \signdate{\msignY}{\msignM}{\msignD}\\
+\end{tabular*}
+\end{table}

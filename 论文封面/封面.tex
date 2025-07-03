@@ -1,0 +1,97 @@
+% 创建封面页
+\thispagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}%取消页眉默认横线
+
+
+%左边页眉设置
+\fancyhead[LO,LE]{\zihao{5}\kaiti 学校代码：10598}
+
+%右边页眉设置
+%缺省值
+\newcommand{\thefDegree}{
+	\usym{2610}  普通高等教育\quad
+	\usym{2610}  成人高等教育\quad
+	\usym{2610}  来华留学生
+}
+%条件判断，请前往基础信息中修改
+\fancyhead[RO,RE]{\zihao{5}\kaiti 
+	\IfEqCase{\theDegree}{
+		{1}{
+		\usym{2611}  普通高等教育\quad
+		\usym{2610}  成人高等教育\quad
+		\usym{2610}  来华留学生}%
+		{2}{
+		\usym{2610}  普通高等教育\quad
+		\usym{2611}  成人高等教育\quad
+		\usym{2610}  来华留学生}%
+		{3}{
+		\usym{2610}  普通高等教育\quad
+		\usym{2610}  成人高等教育\quad
+		\usym{2611}  来华留学生}%
+	}[\thefDegree]
+}
+
+\begin{center}
+\vspace*{52pt}
+\includegraphics[width=13.65cm,height=3.64cm]{logo/gxmu-logo-title.png}
+\\[26pt]
+\makebox[15cm][s]{
+	\textbf{
+		\fontsize{28}{36.4}\stxkai\selectfont
+		\theJie 届本科毕业论文（设计）
+	}
+}
+\end{center}
+\vspace*{52pt}
+
+\newcommand{\theit}[1]{\zihao{#1}\heiti }
+
+\newcommand{\justl}[1]{
+\makebox[3.55cm][s]{
+#1
+}
+}
+\newcommand{\tgap}{
+\vspace{13pt}
+}
+
+%正式信息,使用表格绘制
+%以下信息为自动生成，请前往基础信息文件修改！！！
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{p{3.55cm}p{10.45cm}<{\centering}}
+		\justl{\theit{-2} 题\hspace{\fill}目:} & \theit{3} \theTitle \\
+		\cline{2-2} %只画第二列的底部边框
+\end{tabular}
+\end{table}
+\vspace{48pt}
+
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{p{3.55cm}p{10.45cm}<{\centering}}
+		
+		\justl{\theit{3} 学院名称}& \theit{3}\theCollege
+		\\\cline{2-2}
+		&\\[6pt]
+		
+		\justl{\theit{3} 专业名称}& \theit{3}\theMajor \\\cline{2-2}
+		&\\[6pt]
+		
+		\justl{\theit{3} 学\hspace{3.2em}号}& \theit{3}\theNumber \\\cline{2-2}
+		&\\[6pt]
+		
+		\justl{\theit{3} 学生姓名}& \theit{3}\theAuthor \\\cline{2-2}
+		&\\[6pt]
+		
+		\justl{\theit{3} 指导教师}& \theit{3}\theMentor \\\cline{2-2}
+		
+		&\\[39pt]
+		\multicolumn{2}{c}{\zihao{3}\gbkai\textbf{教务处制}} \\
+		&\\[8pt]
+		\multicolumn{2}{c}{\textbf{\zihao{3}\kaiti
+			\thePublishDate}}
+	\end{tabular}
+\end{table}

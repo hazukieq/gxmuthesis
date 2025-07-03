@@ -1,0 +1,77 @@
+%若想生成公式，请使用 AI 或者LaTex公式编辑器，并直接复制到论文主体中去
+%https://www.latexlive.com/
+%Axmath
+%通过自然语言描述，让AI生成latex公式
+
+%一个 \\(换行符) 会在当前行加上编号,不想要编号或者自定义编号的话
+%请使用 \notag \\,\tag{自定义编号}\\
+%单行公式，直接用 \notag,\tag{自定义编号},放在公式末尾
+
+%行内公式书写
+The Pythagorean theorem is $a^2 + b^2 = c^2$.
+
+%段落式书写
+The Pythagorean theorem is:
+\begin{equation}
+	a^2 + b^2 = c^2 \label{pythagorean}%这个是引用时的标签
+	(4.1)
+\end{equation}
+%公式引用 \eqref{标签名}
+Equation \eqref{pythagorean} is called ‘Gougu theorem’ in Chinese.
+
+
+%多行公式对齐
+\begin{align}
+	a & = b + c \notag \\ %取消编号
+	& = d + e
+\end{align}
+
+%多组公式对齐
+\begin{align}
+	a &=1 & b &=2 & c &=3\\
+	d &=-1 & e &=-2 & f &=-5
+\end{align}
+
+%罗列多个公式，居中但不对齐
+\begin{gather}
+	a = b + c \\
+	d = e + f + g \\
+	h + i = j + k \notag \\
+\end{gather}
+
+%多个公式共用一个编号
+\begin{equation}
+	\begin{aligned}
+		a &= b + c \\
+		d &= e + f + g \\
+		h &= j + k \\
+		l &= m+n
+	\end{aligned}
+\end{equation}
+
+
+% 不等式条件
+%第一种写法
+\begin{equation}
+	|x| = \left\{
+	\begin{array}{rl}
+		-x & \text{if } x < 0,\\
+		0 & \text{if } x = 0,\\
+		x & \text{if } x > 0.
+	\end{array} \right.
+\end{equation}
+%第二种写法
+\begin{equation}
+	|x| = \left\{
+	\begin{cases}
+		-x & \text{if } x < 0,\\
+		0 & \text{if } x = 0,\\
+		x & \text{if } x > 0.
+	\end{cases}
+\end{equation}
+
+%证明
+\begin{proof}
+	为简单起见，我们使用 
+	$$E=mc^2$$
+\end{proof}

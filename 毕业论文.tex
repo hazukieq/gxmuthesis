@@ -1,0 +1,492 @@
+%全文除特别说明以外，所有字号字体设为四号宋体
+%默认基础行间距(baselineskip)为字体大小的1.3倍，
+% 因此四号字体则为14pt,则基础行间距为14*1.3=18.2
+% 欲设置行间距固定值 26 pt，则26/18.2，约为1.423倍
+\documentclass[a4paper, twoside, UTF-8,14pt]{ctexart}
+\input{基础信息/基础信息} %引入基础信息
+
+\usepackage{xeCJK}%支持中文的拓展包
+\usepackage{fontspec}[no-math] % 用于字体选择
+\usepackage{graphicx} %图像
+
+\usepackage{etoolbox} %条件控制
+
+\newbool{isHumanities} % 文科管理类
+\setbool{isHumanities}{\isHMThesis} % 设置为 true 或 false
+
+\newbool{isFront} %是否需要前言
+\setbool{isFront}{\isFronts} %设置为true 或 false
+
+\newbool{isAppend} %是否需要附录
+\setbool{isAppend}{\isAppendix} %设置为true 或 false
+
+
+
+%加载本地字体
+%参考自[桂林电子科技大学毕业论文Latex模板](https://github.com/wrm244/GUEThsis/guet-thesis.cls)
+% 宋体
+\newCJKfontfamily{\zhsong}{SimSun.ttf}[Path=./fonts/]
+\renewcommand{\songti}{\zhsong}
+
+% 黑体
+\newCJKfontfamily{\zhhei}{SimHei.ttf}[Path=./fonts/]
+\renewcommand{\heiti}{\zhhei}
+
+% 楷体
+\newCJKfontfamily{\kaiti}{SimKai.ttf}[AutoFakeBold=true,Path=./fonts/]
+%国标楷体
+\newCJKfontfamily{\gbkai}{KaiGB2312.ttf}[AutoFakeBold=true,Path=./fonts/]
+
+%华文行楷
+\newCJKfontfamily{\stxkai}{STXingKai.otf}[AutoFakeBold=true, Path=./fonts/]
+
+%设置英文为Times new roman
+%设置英文为Times new roman
+\setmainfont{Timesnr.ttf}[BoldFont=Timesnrbd.ttf,ItalicFont=Timesnri.ttf,BoldItalicFont=Timesnribd.ttf,Path=./fonts/]
+
+%设置中文为宋体 
+\setCJKmainfont{SimSun.ttf}[AutoFakeBold=true,Path=./fonts/]
+
+%页边距：左右上下边距均为 2.5 cm
+%装订线位置：左, 装订线 0 cm
+%版式：页眉、页脚均为 1.7 cm
+\usepackage[
+top=2.5cm, bottom=2.5cm, %上下边距
+left=2.5cm, right=2.5cm, %左右边距
+bindingoffset=0cm,%装订线
+%页眉边距=top-headheight-headsep
+%页脚边距=bottom-footskip
+headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{utfsym} %□ 提供这个符号的包
+\usepackage{xstring} %需要控制勾选
+\usepackage{titlesec} %格式化标题用的
+\usepackage{indentfirst}%首行缩进
+
+%段落设置
+\setlength{\parindent}{2em}%缩进长度为2字符
+\linespread{1.423}%行间距26磅
+\setlength\parskip{0pt} %段前后0行
+
+
+%声明
+\newcommand{\declare}[1]{
+\centerline{
+\zihao{3}\heiti #1
+}
+\par
+\vspace{13pt}
+}
+
+%画虚线用的
+\usepackage{tikz}
+\newcommand{\tbox}[1]{
+\mbox{\zihao{4}\songti #1}
+}
+
+\newcommand{\tsign}[1]{
+\zihao{4}论文作者签名: #1
+}
+
+\newcommand{\asign}[1]{
+\zihao{4}学位论文作者签名:\ #1
+}
+
+\newcommand{\msign}[1]{
+\zihao{4}{导师签名:\ #1}
+}
+
+%签字时间
+\newcommand{\tmpdate}{
+\zihao{4}签字日期: \hspace{1em}年\hspace{1em}月\hspace{1em}日
+}
+
+\newcommand{\signdate}[3]{
+\zihao{4}签字日期:\hspace{0.5em} #1 年#2月#3日
+}
+
+%手写签名
+\newcommand{\hwrite}[2]{
+\includegraphics[width=#1]{#2}
+}
+
+%==目录定制===
+%设置目录深度为 3
+\setcounter{tocdepth}{3}
+\usepackage{tocloft}
+\usepackage{setspace}
+
+% 目录一级标题(section)字号字体
+\renewcommand{\cftsecfont}{\songti\zihao{4}}  
+% 目录二级标题(subsection)字号字体
+\renewcommand{\cftsubsecfont}{\songti\zihao{4}}  
+% 目录三级标题(subsubsection)字号字体
+\renewcommand{\cftsubsubsecfont}{\songti\zihao{4}}
+
+%页码与虚点间距离调整,将页码改为左对齐，然后调整一下虚点与虚点间的距离
+%页码宽度
+\cftsetpnumwidth{1em}
+%页码对齐方式:l,c,r 靠左/居中/靠右
+\renewcommand{\cftpnumalign}{l}
+%一级标题页码字体取消加粗
+\renewcommand{\cftsecpagefont}{\zihao{4}\songti}
+%二级三级页码字体设置
+%\renewcommand{\cftsubsecpagefont}{\zihao{4}\songti}
+%\renewcommand{\cftsubsubsecpagefont}{\zihao{4}\songti}
+
+%虚点
+%给一级标题加上一行连续的点
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} 
+%虚点数量，即虚点与虚点间的间隔
+\renewcommand{\cftdotsep}{1.8}
+
+%行间距调整
+%\setlength{\cftbeforechapskip}{0em}
+\setlength{\cftbeforesecskip}{0em} %一级标题
+\setlength{\cftbeforesubsecskip}{0em} %二级
+\setlength{\cftbeforesubsubsecskip}{0em} %三级
+% 目录标题居中
+\renewcommand*\contentsname{
+	\begin{center}
+		\zihao{2}\heiti 目\hspace{1em}录
+	\end{center}
+	}
+
+% 设置目录条目的缩进
+%编号与标题的距离控制
+\newcommand{\titleNumwidth}{0em}
+\setlength{\cftsecnumwidth}{\titleNumwidth}
+\setlength{\cftsubsecnumwidth}{\titleNumwidth}
+\setlength{\cftsubsubsecnumwidth}{\titleNumwidth}
+
+%目录一级标题缩进为0个字符
+\setlength{\cftsecindent}{0em}
+%目录二级标题缩进2字符
+\setlength{\cftsubsecindent}{2em}
+%目录三级标题缩进4字符
+\setlength{\cftsubsubsecindent}{4em}
+
+%控制整个目录表与标题目录的空隙
+\setlength{\cftaftertoctitleskip}{0em}
+
+
+
+%前言[可选]
+\newcommand{\front}[1]{
+\vspace{26pt}
+\centerline{
+\zihao{2}\heiti 前\hspace{1em}言
+}
+\par
+\vspace{13pt}
+#1 \par
+}
+%前言标题
+\newcommand{\ftitle}[1]{
+\vspace{26pt}
+\centerline{
+\zihao{2}\heiti #1
+}
+\par
+\vspace{13pt}
+}
+
+
+%中文标题及专业和姓名
+\newcommand{\cntitle}[3]{
+\begin{center}
+\vspace*{-13pt}
+\zihao{2}\heiti #1
+\\[13pt]
+\zihao{4}\songti #2 \hspace{1em}#3
+\vspace{26pt}
+\\
+\end{center}
+}
+%中文副标题
+\newcommand{\cnsubtitle}[1]{
+	\newline
+	\zihao{-2}\kaiti
+	\hspace{2em}——#1
+}
+
+
+%英文标题
+\newcommand{\entitle}[3]{
+\begin{center}
+\vspace{26pt}
+\zihao{-2} #1
+\\[13pt]
+\zihao{4} #2 \hspace{1em}#3
+\end{center}
+}
+\newcommand{\ensubtitle}[1]{
+	\newline
+	\zihao{3}——#1
+}
+
+%====正文标题等设置=====%
+%\titleformat{级别}{格式}{编号格式}{编号与标题间的间隔}{}
+
+\ifboolexpr{bool{isHumanities}}{%
+	%1级标题
+	% 文科管理类
+	\renewcommand\thesection{\chinese{section}、}
+	\titleformat{\section}{\zihao{-2}\heiti}{\thesection}{0em}{}
+	%2级标题
+	%文科管理类:（一）
+	\renewcommand{\thesubsection}{（\chinese{subsection}）}
+	\titleformat{\subsection}{\zihao{3}\heiti}{\thesubsection}{0em}{}
+	%3级标题
+	%文科管理类:（一）
+	\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
+	\titleformat{\subsubsection}{\zihao{4}\heiti}{\thesubsubsection}{0.5em}{}
+	
+	%4级标题
+	%文科管理类: （1）
+	\newcommand{\smallTiltle}[2]{\par\zihao{4}\songti（#1）#2\par}
+}{%
+	%1级标题	
+	% 理工科类
+	\titleformat{\section}{\zihao{-2}\heiti}{\thesection}{0.5em}{}
+	%2级标题
+	%理工科类
+	\titleformat{\subsection}{\zihao{3}\heiti}{\thesubsection}{0.5em}{}
+	%3级标题
+	%理工科类
+	\titleformat{\subsubsection}{\zihao{4}\heiti}{\thesubsubsection}{0.5em}{}
+	%4级标题
+	%理工科类
+	\newcommand{\smallTiltle}[1]{\par\zihao{4}\songti\hspace{1em} #1 \par}
+	
+}
+%各级标题的段前段后行间距设置
+\titlespacing{\section}{0pt}{26pt}{13pt}
+\titlespacing{\subsection}{0pt}{13pt}{13pt}
+\titlespacing{\subsubsection}{0pt}{13pt}{0pt}
+
+
+%正文
+\newcommand{\mbody}[1]{
+\zihao{4} #1
+}
+
+%摘要
+\newcommand{\cnabstract}[2]{
+\centerline{\zihao{3}\heiti 摘\hspace{1em}要}
+\par
+\zihao{4}\songti #1 \par
+\zihao{4}\heiti 关键词\quad \zihao{4}\songti #2}
+
+%英文摘要
+\newcommand{\enabstract}[2]{
+\centerline{\zihao{3} \textbf{\texttt{Abstract}}}
+\par
+\zihao{4} #1 \par
+\zihao{4}\textbf{Keywords:}#2}
+
+%结语标题[可选]
+\newcommand{\etitle}[1]{
+\vspace{26pt}
+\centerline{
+\zihao{2}\heiti #1
+}
+\par
+\vspace{13pt}
+}
+
+%参考文献
+% 使用大佬提供的国标参考文献样式
+% source: https://github.com/hushidong/biblatex-gb7714-2015
+\usepackage[colorlinks=true,pdfstartview=FitH,%
+%网页链接颜色[red]
+urlcolor=black,
+%超链接颜色[blue]
+linkcolor=black,
+%文件链接颜色
+filecolor=black,
+%锚定颜色[violet]
+anchorcolor=black,
+%引用文献颜色[magenta]
+citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
+
+% 使用符合 GB/T 7714-2015 规范的参考文献样式
+\usepackage[backend=biber,style=gb7714-2015, date=iso]{biblatex}
+
+%按照学校规范电子文献日期应该放在最后
+\DeclareFieldFormat{urldate}{#1}
+\renewbibmacro*{url+urldate}{%
+  \usebibmacro{url}%
+  \iffieldundef{urlyear}
+    \printtext{,}
+    {\setunit*{\addspace}%
+     \printurldate}
+}
+% 加载参考文献数据库，注意加 .bib 扩展名
+\addbibresource{参考文献/参考文献条目.bib}
+%设置参考文献标题2号黑体居中
+%解决方案: https://www.zhihu.com/question/481540096
+\defbibheading{bibliography}[参考文献]{
+\vspace{26pt}
+\centerline{\zihao{2}\heiti #1}
+}
+
+%设置编号和内容的间距尺寸
+\setlength{\biblabelsep}{0mm}
+
+%设置参考文献字体4号宋体,26pt
+%方案:https://github.com/hushidong/biblatex-gb7714-2015/wiki/如何调整文献表的标题、字体、行距等格式？
+\renewcommand{\bibfont}{\zihao{4}}
+
+%致谢
+\renewcommand{\thanks}[1]{
+\vspace{26pt}
+\centerline{
+\zihao{2}\heiti 致\hspace{1em}谢
+}
+\par
+\vspace{13pt}
+#1\par
+}
+%附录
+%附录依次用大写英文字母A、B、C…编序号
+\renewcommand\appendix{\par
+	\setcounter{section}{0}
+	\setcounter{subsection}{0}
+	\gdef\thesection{附录 \Alph{section}}}
+
+%附录A”三字用二号黑体，单独成行，居中对齐，段前1行，段后0行
+\newcommand{\theAppend}[1]{
+{
+	\phantomsection
+	\addcontentsline{toc}{section}{#1}
+	\zihao{3}\heiti #1
+}
+}
+
+%附录中的图、表、公式、参考文献等要与正文分开，也一律用阿拉伯数字编码，但在序号前冠以附录序码，如：图A1，表B2，（B3），[A4]等，分别表示附录A的图1、附录B的表2、附录B的公式3、附录A的参考文献第4条。
+%参考自 https://zhuanlan.zhihu.com/p/690183371
+\newcommand{\theApppendRenumbering}[1]{
+\setcounter{table}{0}   %从0开始编号，显示出来表会A1开始编号
+\setcounter{figure}{0}
+\setcounter{equation}{0}
+
+%定义编号格式，在数字序号前加字符“A"
+%这里就是设置表A1...
+\renewcommand{\thetable}{#1\arabic{table}}
+%这里就是设置图A1...
+\renewcommand{\thefigure}{#1\arabic{figure}}
+%这里就是设置公式(A1)
+\renewcommand{\theequation}{#1\arabic{equation}}
+%这里就是设置文献[A1]
+}
+%\usepackage{pdfpages} %直接插入pdf文件,单页也可以用includegraphics
+
+
+%引用表格和图片
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\usepackage{caption}
+%表格题目与表格的距离
+\captionsetup[table]{labelsep=space,skip=0pt} % 表
+%图片题目与图片的距离
+\captionsetup[figure]{labelsep=space,skip=10pt} % 图
+
+\newcommand{\tcap}[1]{
+	\caption{\zihao{5}\kaiti #1}
+}
+
+
+%数学公式
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+%五号楷体,编号为(1)...
+\newtagform{pform}[\zihao{5}\kaiti]{\zihao{5}\kaiti (}{\zihao{5}\kaiti )}
+\usetagform{pform}
+
+%加载不分页的合并宏,\include* 不分页
+\usepackage{newclude}
+
+\begin{document}
+
+%清除页眉页脚
+\thispagestyle{empty}
+\include{论文封面/封面}
+%单独成页
+\clearpage
+
+%全局使用4号字体
+\zihao{4}
+
+%清除页眉页脚
+\thispagestyle{empty}
+\include*{论文声明/声明}
+%单独成页
+\clearpage
+
+%清除页眉页脚
+\newpage
+\pagestyle{empty}
+\pagenumbering{gobble}
+\tableofcontents
+\thispagestyle{empty}	
+\clearpage
+
+%-----正文是有页眉页脚的-------
+%页眉页脚具体设置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[OC]{
+	%页眉奇数页设置为「20xx届广西医科大学本科毕业论文」
+	\zihao{5} \theJie 广西医科大学本科毕业论文
+	\\[-9pt] %题目与双横线间的距离
+	%双横线
+	\rule{\textwidth}{.5pt}\\[-11.5pt]
+	\rule{\textwidth}{.5pt}
+}
+
+\fancyhead[EC]{
+	%页眉偶数页设置为「你的论文标题」
+	\zihao{5} \theTitle
+	\\[-9pt] %题目与双横线间的距离
+	%双横线
+	\rule{\textwidth}{.5pt}\\[-11.5pt]
+	\rule{\textwidth}{.5pt}
+}
+
+
+\fancyfoot[C]{
+	%双横线
+	\rule{\textwidth}{.5pt}\\[-11.5pt]
+	\rule{\textwidth}{.5pt}
+	\zihao{5}\thepage
+} %页脚设置居中页码,5号宋体
+
+\renewcommand{\headrulewidth}{0pt}%取消默认横线
+\renewcommand{\footrulewidth}{0pt}%取消默认横线
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{fancy}%应用页眉页脚
+
+\include*{论文摘要/摘要}
+
+%条件控制是否添加，如需修改请前往基础信息
+\ifboolexpr{bool{isFront}}{%
+	\include*{论文主体/前言}
+}{}
+
+\include*{论文主体/论文}
+\include*{论文主体/参考文献}
+\include*{论文致谢/致谢}
+
+%条件控制是否添加，如需修改请前往基础信息
+\ifboolexpr{bool{isAppend}}{%
+\include*{论文附录/附录}
+}{}
+
+\end{document}

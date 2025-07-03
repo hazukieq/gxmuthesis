@@ -1,0 +1,156 @@
+%====你可以在这里添加要用的包=====%
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+%====你可以在这里添加要用的包=====%
+
+%===你可以在此添加自定义字体====%
+%请务必将字体存放在 fonts 文件夹中!!!
+%字体花名前面的 \ 不要去掉！！！
+%\newCJKfontfamily{\字体花名}{字体文件路径}[Path=./fonts/]
+
+%后续怎么使用呢？
+%用法: \字体花名 文本内容
+%===你可以在此添加自定义字体====%
+
+%====全局控制设置====%
+%是否切换为文科、管理类标题样式?
+%文科、管理类标题样式:
+%	 一级标题:一、，二级标题: (一), 三级标题: 1., 四级标题: (1)
+%理工科标题样式:
+%	一级标题: 1, 二级标题:1.1, 三级标题：1.1.1,四级标题: 1.1.1.1
+%默认选择为理工科样式:false
+%选择文科管理类样式: true
+%只能输入: true[文科管理样式],false[理工科样式]
+\newcommand{\isHMThesis}{false}
+
+%前言是否需要呢？
+%选项: true[需要],false[不需要]
+%默认需要
+%只能输入: true,false
+\newcommand{\isFronts}{true}
+
+%附录是否需要呢？
+%选项: true[需要],false[不需要]
+%默认需要
+%只能输入: true,false
+\newcommand{\isAppendix}{true}
+
+%====全局控制设置====%
+
+%====封面摘要部分====%
+\newcommand{\theDegree}{
+%学历程度
+%1: 普通高等教育
+%2: 成人高等教育
+%3: 来华留学生
+%只要不是1,2,3 这三个数字，则会触发默认不勾选
+%默认是没有填写，请自行输入数字
+1
+}
+
+\newcommand{\theJie}{
+%第几届
+%xxxx
+2025
+}
+
+\newcommand{\theTitle}{
+%你的论文题目
+将加快AI生物基础设施建设
+}
+
+\newcommand{\theCollege}{
+%你的学院名称
+护理学院
+}
+
+\newcommand{\theMajor}{
+%你的专业名称
+护理学
+}
+
+\newcommand{\theNumber}{
+%你的学号
+20202020201
+}
+
+
+\newcommand{\theAuthor}{
+%你的名字
+叶绘梨衣
+}
+
+\newcommand{\theMentor}{
+%你的导师名字(职称/学历)
+央未雪(硕士)
+}
+
+\newcommand{\thePublishDate}{
+%教务处制，务必使用中文数字
+% xxxx年xx月
+二〇二五年六月
+}
+%====封面部分====%
+
+
+%===声明页签字===%
+%你可以在这里设置，也可以在相应页面设置
+%但推荐在这里改
+%论文作者手签
+
+%论文作者签字图片宽度，默认1英寸(1in)
+\newcommand{\asignWidth}{1in}
+%导师签字图片宽度，默认1英寸(1in)
+\newcommand{\msignWidth}{1in}
+
+%论文作者签字
+\newcommand{\ahwrite}{手写签名/anysign.png}
+%导师手签
+\newcommand{\mhwrite}{手写签名/anysign.png}
+
+%论文作者签字日期,三部分构成:年，月，日
+\newcommand{\asignY}{2025}%年
+\newcommand{\asignM}{5}%月
+\newcommand{\asignD}{15}%日
+
+%导师签字日期,三部分构成:年，月，日
+\newcommand{\msignY}{2025}%年
+\newcommand{\msignM}{5}%月
+\newcommand{\msignD}{17}%日
+%===声明页签字===%
+
+%====英文摘要部分====%
+%中文摘要正文
+\newcommand{\theCNAbs}{
+我们用AI设计超越自然进化的超级蛋白，并通过AI蛋白质基础设施建设，把蛋白质设计这一科学问题转变为`可编程' `可预测'的工程问题。许锦波表示，分子之心还将探索从蛋白质元件设计到代谢通路设计、工艺优化等生物经济领域研发、生产全流程的系统性优化设计。
+}
+%中文关键词,以分号分割
+\newcommand{\theCNAbsKeywords}{
+平台系统；科普；防治；开发
+}
+
+\newcommand{\theTitleen}{
+	%你的英文论文题目
+	The Construction of AI Bioinfrastructure Will Be Accelerated
+}
+
+\newcommand{\theMajoren}{
+	%你的专业英文名称
+	Nursing
+}
+
+\newcommand{\theAuthoren}{
+	%你的名字英文,第一个姓要全大写
+	YE Huiliyi
+}
+
+%英文摘要正文
+\newcommand{\theENAbs}{
+We use AI to design super proteins that transcend natural evolution, and through the construction of AI protein infrastructure, we turn the scientific problem of protein design into a 'programmable' and 'predictable' engineering problem. Xu Jinbo said that Molecular Heart will also explore the systematic optimization design of the whole process of R\&D and production in the field of bioeconomy, from protein element design to metabolic pathway design and process optimization.
+}
+
+%英文摘要关键词
+\newcommand{\theENAbsKeywords}{
+platform system; popular science; prevention and treatment; development；
+}
+%====英文摘要部分====%

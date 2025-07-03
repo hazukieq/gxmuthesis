@@ -1,0 +1,157 @@
+\documentclass[a4paper, UTF-8,14pt]{ctexart}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{caption}
+
+\newcommand{\tcap}[1]{
+	\caption{\zihao{5}\kaishu #1}
+}
+
+\begin{document}
+%前面的代码不用管，这里只是为了方便编译而写的
+% 请直接将其复制到论文主体文件中
+%为了快速正确生成表格，推荐使用以下工具:
+%https://tableconvert.com/zh-cn/latex-generator
+%https://www.tablesgenerator.com/
+
+%经典三线表开始
+\begin{table}[!h]
+	\centering
+	\tcap{动物研究} %表格题目
+	%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+	
+	\label{tab:t1} %引用标签
+	\begin{tabular}{cl}
+		\toprule
+		动物 & 详情 \\
+		\midrule
+		狗    & The dog is the most widely abundant terrestrial carnivore. \\
+		\addlinespace
+		猫    & The cat is a domestic species of small carnivorous mammal.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+%经典三线表结束
+
+%[ht]表示 放在当前位置，放在顶部
+%[!h]表示强制放在当前位置
+\begin{table}[!h]
+	\centering
+	\tcap{动物研究} %表格题目
+	%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+	
+	\label{tab:t2} %引用标签
+	\begin{tabular}{cp{10cm}}
+		\toprule
+		动物 & 详情 \\
+		\midrule
+		狗    & The dog is the most widely abundant terrestrial carnivore. \\
+		\addlinespace
+		猫    & The cat is a domestic species of small carnivorous mammal.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+%经典三线表结束
+
+%经典三线表
+\begin{table}[!h]
+	\centering
+	\tcap{动物研究} %表格题目
+	%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+	\label{tab:t3} %引用标签
+	
+	%c表示居中,l表示左对齐，r表示右对齐
+	%|表示竖线
+	%故 {clr} 表示有三列，对齐方式分别是居中、左对齐、右对齐
+	%指定列宽度,p{数字cm}/p{数字pt}/p{数字em}
+	%故 {cp{6cm}p{4cm}},表示有三列，第一列是居中，第二列是指定宽度为6cm，第三列宽度为4cm
+	\begin{tabular}{cp{10cm}}%两列，第一列居中第二列宽度为10cm
+		\toprule
+		动物 & 详情 \\
+		\midrule
+		狗    & The dog is the most widely abundant terrestrial carnivore. \\
+		\addlinespace
+		猫    & The cat is a domestic species of small carnivorous mammal.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+%经典表格，指定宽度
+\begin{table}[!h]
+	\centering
+	\tcap{动物研究} %表格题目
+	\begin{tabularx}{0.8\textwidth}
+		{
+			|>{\centering\arraybackslash}X %居中对齐
+			|>{\raggedright\arraybackslash}X %左对齐
+			|>{\raggedleft\arraybackslash}X| %右对齐
+		}
+		\hline
+		动物 & 详情 & 属性 \\
+		\hline
+		狗    & The dog is the most widely abundant terrestrial carnivore. & 守护者\\
+		\hline
+		猫    & The cat is a domestic species of small carnivorous mammal. & 呵护者\\
+		\hline
+	\end{tabularx}
+\end{table}
+
+%经典三线表，指定列宽
+\begin{table}[!h]
+	\centering
+	\tcap{动物研究} %表格题目
+	%指定为一行文字宽度(\textwidth)的80%
+	%或者指定为 6mm,6em,6pt等
+	\begin{tabularx}{0.8\textwidth}
+		{
+			>{\raggedleft\arraybackslash}X %右对齐
+			>{\centering\arraybackslash}X %居中
+			>{\raggedright\arraybackslash}X %左对齐
+		}
+	\toprule
+	动物 & 详情 & 属性 \\
+	\midrule
+	狗    & The dog is the most widely abundant terrestrial carnivore. & 守护者\\
+	\addlinespace
+	猫    & The cat is a domestic species of small carnivorous mammal. & 呵护者\\
+	\bottomrule
+	\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{minipage}[b]{.5\textwidth}
+		\centering
+		\captionof{table}{动物研究} %表格题目
+		%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+		\label{tab:t2} %引用标签
+		\begin{tabular}{cp{6cm}}
+			\toprule
+			动物 & 详情 \\
+			\midrule
+			狗    & 厉害 \\
+			\addlinespace
+			猫    & 可爱\\
+			\bottomrule
+		\end{tabular}
+	\end{minipage}
+	\qquad
+	\begin{minipage}[b]{.3\textwidth}
+		\centering
+		\captionof{table}{动物研究} %表格题目
+		%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+		
+		\label{tab:t3} %引用标签
+		\begin{tabular}{cp{3cm}}
+			\toprule
+			动物 & 详情 \\
+			\midrule
+			狗    & 厉害 \\
+			\addlinespace
+			猫    & 可爱\\
+			\bottomrule
+		\end{tabular}
+	\end{minipage}
+\end{figure}
+
+\end{document}

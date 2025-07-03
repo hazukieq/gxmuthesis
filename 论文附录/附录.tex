@@ -1,0 +1,125 @@
+%推荐新开一页
+\newpage %不需要者请注释掉
+
+\theAppend{附录A}
+\theApppendRenumbering{A} %请传递字母,如附录A的字母A
+
+\begin{figure}[h!]
+	\centering\rule{1cm}{1cm}
+	\caption{附录图片}
+\end{figure}
+
+\begin{equation}
+	1+1=2
+\end{equation}
+
+\begin{table}[ht]
+	\centering
+	\tcap{动物研究} %表格题目
+	%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+	
+	\label{tab:t1} %引用标签
+	\begin{tabular}{lp{10cm}}
+		\toprule
+		动物 & 详情 \\
+		\midrule
+		狗    & The dog is the most widely abundant terrestrial carnivore. \\
+		\addlinespace
+		猫    & The cat is a domestic species of small carnivorous mammal.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\tcap{动物研究} %表格题目
+	%也可以使用 \caption{\zihao{5}\kaiti 表格题目}
+	
+	\label{tab:t1} %引用标签
+	\begin{tabular}{lp{10cm}}
+		\toprule
+		动物 & 详情 \\
+		\midrule
+		狗    & The dog is the most widely abundant terrestrial carnivore. \\
+		\addlinespace
+		猫    & The cat is a domestic species of small carnivorous mammal.\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+	\centering\rule{1cm}{1cm}
+	\caption{附录图片}
+\end{figure}
+
+%建议新开一页
+\newpage
+%附录B
+\theAppend{附录B}
+\theApppendRenumbering{B} %请传递字母,如附录B的字母B
+这里是测试内容
+\section*{无序列表}
+\begin{itemize}
+	\item 第一项
+	\item 第二项
+	\item 第三项
+\end{itemize}
+
+\section*{有序列表}
+\begin{enumerate}
+	\item 第一项
+	\item 第二项
+	\item 第三项
+\end{enumerate}
+
+\section*{描述列表}
+\begin{description}
+	\item[第一项] 这是第一项的描述。
+	\item[第二项] 这是第二项的描述。
+	\item[第三项] 这是第三项的描述。
+\end{description}
+
+\section*{嵌套列表}
+\begin{enumerate}
+	\item 第一项
+	\item 第二项
+	\begin{itemize}
+		\item 子项一
+		\item 子项二
+	\end{itemize}
+	\item 第三项
+\end{enumerate}
+
+\section*{自定义无序列表}
+\begin{itemize}[label=\textbullet] % 使用圆点符号
+	\item 第一项
+	\item 第二项
+	\item 第三项
+\end{itemize}
+
+
+\section*{其他类列表}
+\begin{enumerate}[label=(\Roman*)]
+	\item 大写罗马字母+小括号1
+	\item 大写罗马字母+小括号2 
+\end{enumerate}
+
+\begin{enumerate}[label=\heiti\chinese*、]
+	\item 黑体中文编号一、
+	\item 黑体中文编号二、
+\end{enumerate}
+
+\begin{enumerate}[label=\heiti\arabic*、]
+	\item 黑体中文编号1、
+	\item 黑体中文编号2、
+\end{enumerate}
+
+\begin{enumerate}[A.]
+	\item 第一项内容
+	\item 第二项内容
+\end{enumerate}
+
+\begin{enumerate}[\heiti a.]
+	\item 第一项内容
+	\item 第二项内容
+\end{enumerate}

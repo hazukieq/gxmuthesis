@@ -1,0 +1,56 @@
+\documentclass[a4paper, UTF-8,14pt]{ctexart}
+\usepackage{graphicx}
+\newcommand{\tcap}[1]{
+	\caption{\zihao{5}\kaishu #1}
+}
+\newcommand{\picPath}{sample.jpg}
+\begin{document}
+% 请直接将其复制到论文主体文件中
+%%===记得把\picPath替换为 图片/sample.jpg !!!!====%%
+
+%单张图片引用
+\begin{figure}[!htbp]
+	\centering
+	%width,height,若只指定宽度/高度，则另一个会自适应
+	%scale=⟨scale⟩将图片相对于原尺寸缩放n倍,
+	%angle=⟨angle⟩将图片逆时针旋转n度
+	\includegraphics[width=6cm]{\picPath}
+	\tcap{论文图片}
+	%\caption{\zihao{5}\kaiti 论文图片}
+	\label{fig:f1}	
+\end{figure}
+
+%并排的同时，每个图片底部都有题目
+\begin{figure}[!htbp]
+	\centering
+	\begin{minipage}[b]{.4\linewidth}
+		\centering
+		\includegraphics[width=6cm]{\picPath}
+		\tcap{论文图片A}	
+	\end{minipage}
+	\qquad
+	\begin{minipage}[b]{.4\linewidth}
+		\centering
+		\includegraphics[width=6cm]{\picPath}
+		\tcap{论文图片B}	
+	\end{minipage}
+\end{figure}
+
+%并排图片共用标题
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=6cm]{\picPath}
+	\qquad
+	\includegraphics[width=6cm]{\picPath}
+	\tcap{论文并列图片}
+	%\caption{\zihao{5}\kaiti 论文图片}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=6cm]{\picPath}
+	\tcap{论文图片}
+	\label{fig:f3}	
+\end{figure}
+
+\end{document}
