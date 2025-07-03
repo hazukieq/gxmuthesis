@@ -26,7 +26,7 @@
 
 #### 获取途径
 
-1. 点击 右侧 **Github Release** 获取压缩包
+1. 点击 右侧 **Github Release** [获取压缩包](https://github.com/hazukieq/gxmuthesis/releases/latest)
 2. 通过 `Git` 拉取源码
 
 ```bash
