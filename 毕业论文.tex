@@ -57,11 +57,71 @@ bindingoffset=0cm,%装订线
 %页脚边距=bottom-footskip
 headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} %页眉页脚用的包
 \usepackage{utfsym} %□ 提供这个符号的包
 \usepackage{xstring} %需要控制勾选
 \usepackage{titlesec} %格式化标题用的
 \usepackage{indentfirst}%首行缩进
+
+%==目录定制===
+%设置目录深度为 3
+\setcounter{tocdepth}{3}
+\usepackage{tocloft}
+\usepackage{setspace}
+
+% 目录一级标题(section)字号字体
+\renewcommand{\cftsecfont}{\songti\zihao{4}}  
+% 目录二级标题(subsection)字号字体
+\renewcommand{\cftsubsecfont}{\songti\zihao{4}}  
+% 目录三级标题(subsubsection)字号字体
+\renewcommand{\cftsubsubsecfont}{\songti\zihao{4}}
+
+%页码与虚点间距离调整,将页码改为左对齐，然后调整一下虚点与虚点间的距离
+%页码宽度
+\cftsetpnumwidth{1em}
+%页码对齐方式:l,c,r 靠左/居中/靠右
+\renewcommand{\cftpnumalign}{r}
+%一级标题页码字体取消加粗
+\renewcommand{\cftsecpagefont}{\zihao{4}\songti}
+%二级三级页码字体设置
+%\renewcommand{\cftsubsecpagefont}{\zihao{4}\songti}
+%\renewcommand{\cftsubsubsecpagefont}{\zihao{4}\songti}
+
+%虚点
+%给一级标题加上一行连续的点
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} 
+%虚点数量，即虚点与虚点间的间隔
+\renewcommand{\cftdotsep}{1.8}
+
+%行间距调整
+%\setlength{\cftbeforechapskip}{0em}
+\setlength{\cftbeforesecskip}{0em} %一级标题
+\setlength{\cftbeforesubsecskip}{0em} %二级
+\setlength{\cftbeforesubsubsecskip}{0em} %三级
+% 目录标题居中
+\renewcommand*\contentsname{
+	\begin{center}
+		\zihao{2}\heiti 目\hspace{1em}录
+	\end{center}
+}
+
+% 设置目录条目的缩进
+%编号与标题的距离控制
+\newcommand{\titleNumwidth}{0em}
+\setlength{\cftsecnumwidth}{\titleNumwidth}
+\setlength{\cftsubsecnumwidth}{\titleNumwidth}
+\setlength{\cftsubsubsecnumwidth}{\titleNumwidth}
+
+%目录一级标题缩进为0个字符
+\setlength{\cftsecindent}{0em}
+%目录二级标题缩进2字符
+\setlength{\cftsubsecindent}{2em}
+%目录三级标题缩进4字符
+\setlength{\cftsubsubsecindent}{4em}
+
+%控制整个目录表与标题目录的空隙
+\setlength{\cftaftertoctitleskip}{0em}
+
 
 %段落设置
 \setlength{\parindent}{2em}%缩进长度为2字符
@@ -102,7 +162,7 @@ headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 }
 
 \newcommand{\signdate}[3]{
-\zihao{4}签字日期:\hspace{0.5em} #1 年#2月#3日
+\zihao{4}签字日期:\hspace{0.5em} #1年#2月#3日
 }
 
 %手写签名
@@ -110,86 +170,24 @@ headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 \includegraphics[width=#1]{#2}
 }
 
-%==目录定制===
-%设置目录深度为 3
-\setcounter{tocdepth}{3}
-\usepackage{tocloft}
-\usepackage{setspace}
+%=====摘要设置=====%
+%中文摘要
+\newcommand{\cnabstract}[2]{
+	\phantomsection
+	\addcontentsline{toc}{section}{摘\hspace{1em}要}
+	\centerline{\zihao{3}\heiti 摘\hspace{1em}要}
+	\par
+	\zihao{4}\songti #1 \par
+	\zihao{4}\heiti 关键词\quad \zihao{4}\songti #2}
 
-% 目录一级标题(section)字号字体
-\renewcommand{\cftsecfont}{\songti\zihao{4}}  
-% 目录二级标题(subsection)字号字体
-\renewcommand{\cftsubsecfont}{\songti\zihao{4}}  
-% 目录三级标题(subsubsection)字号字体
-\renewcommand{\cftsubsubsecfont}{\songti\zihao{4}}
-
-%页码与虚点间距离调整,将页码改为左对齐，然后调整一下虚点与虚点间的距离
-%页码宽度
-\cftsetpnumwidth{1em}
-%页码对齐方式:l,c,r 靠左/居中/靠右
-\renewcommand{\cftpnumalign}{l}
-%一级标题页码字体取消加粗
-\renewcommand{\cftsecpagefont}{\zihao{4}\songti}
-%二级三级页码字体设置
-%\renewcommand{\cftsubsecpagefont}{\zihao{4}\songti}
-%\renewcommand{\cftsubsubsecpagefont}{\zihao{4}\songti}
-
-%虚点
-%给一级标题加上一行连续的点
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} 
-%虚点数量，即虚点与虚点间的间隔
-\renewcommand{\cftdotsep}{1.8}
-
-%行间距调整
-%\setlength{\cftbeforechapskip}{0em}
-\setlength{\cftbeforesecskip}{0em} %一级标题
-\setlength{\cftbeforesubsecskip}{0em} %二级
-\setlength{\cftbeforesubsubsecskip}{0em} %三级
-% 目录标题居中
-\renewcommand*\contentsname{
-	\begin{center}
-		\zihao{2}\heiti 目\hspace{1em}录
-	\end{center}
-	}
-
-% 设置目录条目的缩进
-%编号与标题的距离控制
-\newcommand{\titleNumwidth}{0em}
-\setlength{\cftsecnumwidth}{\titleNumwidth}
-\setlength{\cftsubsecnumwidth}{\titleNumwidth}
-\setlength{\cftsubsubsecnumwidth}{\titleNumwidth}
-
-%目录一级标题缩进为0个字符
-\setlength{\cftsecindent}{0em}
-%目录二级标题缩进2字符
-\setlength{\cftsubsecindent}{2em}
-%目录三级标题缩进4字符
-\setlength{\cftsubsubsecindent}{4em}
-
-%控制整个目录表与标题目录的空隙
-\setlength{\cftaftertoctitleskip}{0em}
-
-
-
-%前言[可选]
-\newcommand{\front}[1]{
-\vspace{26pt}
-\centerline{
-\zihao{2}\heiti 前\hspace{1em}言
-}
-\par
-\vspace{13pt}
-#1 \par
-}
-%前言标题
-\newcommand{\ftitle}[1]{
-\vspace{26pt}
-\centerline{
-\zihao{2}\heiti #1
-}
-\par
-\vspace{13pt}
-}
+%英文摘要
+\newcommand{\enabstract}[2]{
+	\phantomsection
+	\addcontentsline{toc}{section}{Abstract}
+	\centerline{\zihao{3} \textbf{\texttt{Abstract}}}
+	\par
+	\zihao{4} #1 \par
+	\zihao{4}\textbf{Keywords:}#2}
 
 
 %中文标题及专业和姓名
@@ -220,10 +218,13 @@ headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 \zihao{4} #2 \hspace{1em}#3
 \end{center}
 }
+%英文副标题
 \newcommand{\ensubtitle}[1]{
 	\newline
 	\zihao{3}——#1
 }
+%=====摘要设置=====%
+
 
 %====正文标题等设置=====%
 %\titleformat{级别}{格式}{编号格式}{编号与标题间的间隔}{}
@@ -266,36 +267,47 @@ headheight=1cm, footskip=0.8cm,headsep=-0.2cm]{geometry}
 \titlespacing{\subsubsection}{0pt}{13pt}{0pt}
 
 
-%正文
-\newcommand{\mbody}[1]{
-\zihao{4} #1
+%====前言、结语设置====%
+%前言标题
+\newcommand{\front}[1]{
+	\vspace{26pt}
+	\phantomsection
+	\addcontentsline{toc}{section}{前\hspace{1em}言}
+	\centerline{
+		\zihao{2}\heiti 前\hspace{1em}言
+	}
+	\par
+	\vspace{13pt}
+	#1 \par
 }
 
-%摘要
-\newcommand{\cnabstract}[2]{
-\centerline{\zihao{3}\heiti 摘\hspace{1em}要}
-\par
-\zihao{4}\songti #1 \par
-\zihao{4}\heiti 关键词\quad \zihao{4}\songti #2}
+%前言标题
+\newcommand{\ftitle}[1]{
+	\vspace{26pt}
+	\phantomsection
+	\addcontentsline{toc}{section}{#1}
+	\centerline{
+		\zihao{2}\heiti #1
+	}
+	\par
+	\vspace{13pt}
+}
 
-%英文摘要
-\newcommand{\enabstract}[2]{
-\centerline{\zihao{3} \textbf{\texttt{Abstract}}}
-\par
-\zihao{4} #1 \par
-\zihao{4}\textbf{Keywords:}#2}
-
-%结语标题[可选]
+%结语标题
 \newcommand{\etitle}[1]{
 \vspace{26pt}
+% 添加目录条目
+\phantomsection
+\addcontentsline{toc}{section}{#1}
 \centerline{
 \zihao{2}\heiti #1
 }
 \par
 \vspace{13pt}
 }
+%====前言、结语设置====%
 
-%参考文献
+%====参考文献设置====%
 % 使用大佬提供的国标参考文献样式
 % source: https://github.com/hushidong/biblatex-gb7714-2015
 \usepackage[colorlinks=true,pdfstartview=FitH,%
@@ -328,6 +340,9 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 %解决方案: https://www.zhihu.com/question/481540096
 \defbibheading{bibliography}[参考文献]{
 \vspace{26pt}
+% 添加目录条目
+\phantomsection
+\addcontentsline{toc}{section}{参考文献}
 \centerline{\zihao{2}\heiti #1}
 }
 
@@ -337,10 +352,14 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 %设置参考文献字体4号宋体,26pt
 %方案:https://github.com/hushidong/biblatex-gb7714-2015/wiki/如何调整文献表的标题、字体、行距等格式？
 \renewcommand{\bibfont}{\zihao{4}}
+%====参考文献设置====%
 
-%致谢
+%====致谢设置====%
+%致谢正文
 \renewcommand{\thanks}[1]{
 \vspace{26pt}
+\phantomsection
+\addcontentsline{toc}{section}{致\hspace{1em}谢}
 \centerline{
 \zihao{2}\heiti 致\hspace{1em}谢
 }
@@ -348,19 +367,16 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 \vspace{13pt}
 #1\par
 }
-%附录
-%附录依次用大写英文字母A、B、C…编序号
-\renewcommand\appendix{\par
-	\setcounter{section}{0}
-	\setcounter{subsection}{0}
-	\gdef\thesection{附录 \Alph{section}}}
+%====致谢设置====%
 
+
+%====附录设置====%
 %附录A”三字用二号黑体，单独成行，居中对齐，段前1行，段后0行
 \newcommand{\theAppend}[1]{
 {
 	\phantomsection
 	\addcontentsline{toc}{section}{#1}
-	\zihao{3}\heiti #1
+	\noindent\zihao{3}\heiti #1
 }
 }
 
@@ -380,9 +396,10 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 \renewcommand{\theequation}{#1\arabic{equation}}
 %这里就是设置文献[A1]
 }
-%\usepackage{pdfpages} %直接插入pdf文件,单页也可以用includegraphics
+%====附录设置====%
 
 
+%====表格图片公式设置====%
 %引用表格和图片
 \usepackage{float}
 \usepackage{tabularx}
@@ -406,27 +423,38 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 %五号楷体,编号为(1)...
 \newtagform{pform}[\zihao{5}\kaiti]{\zihao{5}\kaiti (}{\zihao{5}\kaiti )}
 \usetagform{pform}
+%====表格图片公式设置====%
 
+
+%====合并各文件夹文件设置====%
 %加载不分页的合并宏,\include* 不分页
 \usepackage{newclude}
+%====合并各文件夹文件设置====%
 
 \begin{document}
 
+%====论文封面====%
 %清除页眉页脚
 \thispagestyle{empty}
 \include{论文封面/封面}
 %单独成页
 \clearpage
+%====论文封面====%
 
-%全局使用4号字体
-\zihao{4}
 
+%====全局使用4号宋体====%
+\zihao{4}\songti
+%====全局使用4号宋体====%
+
+%====论文声明====%
 %清除页眉页脚
 \thispagestyle{empty}
 \include*{论文声明/声明}
 %单独成页
 \clearpage
+%====论文封面====%
 
+%====论文目录====%
 %清除页眉页脚
 \newpage
 \pagestyle{empty}
@@ -434,9 +462,12 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 \tableofcontents
 \thispagestyle{empty}	
 \clearpage
+%====论文目录====%
 
-%-----正文是有页眉页脚的-------
-%页眉页脚具体设置
+%================论文正文部分================%
+
+%===正文页眉页脚设置===%
+%重新页眉页脚
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[OC]{
@@ -467,25 +498,44 @@ citecolor=black]{hyperref} % 加载 hyperref 宏包，使用超链接
 
 \renewcommand{\headrulewidth}{0pt}%取消默认横线
 \renewcommand{\footrulewidth}{0pt}%取消默认横线
+%===正文页眉页脚设置===%
 
+%===恢复页码设置===%
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \pagestyle{fancy}%应用页眉页脚
+%===恢复页码设置===%
 
+%===包含摘要文件===%
 \include*{论文摘要/摘要}
+%===包含摘要文件===%
 
+%===包含前言文件===%
 %条件控制是否添加，如需修改请前往基础信息
 \ifboolexpr{bool{isFront}}{%
 	\include*{论文主体/前言}
 }{}
+%===包含前言文件===%
 
+%===包含论文主体文件===%
 \include*{论文主体/论文}
-\include*{论文主体/参考文献}
-\include*{论文致谢/致谢}
+%===包含论文主体文件===%
 
+%===包含参考文献文件===%
+\include*{论文主体/参考文献}
+%===包含参考文献文件===%
+
+%===包含致谢文件===%
+\include*{论文致谢/致谢}
+%===包含致谢文件===%
+
+%===包含附录文件===%
 %条件控制是否添加，如需修改请前往基础信息
 \ifboolexpr{bool{isAppend}}{%
 \include*{论文附录/附录}
 }{}
+%===包含附录文件===%
+
+%================论文正文部分================%
 
 \end{document}

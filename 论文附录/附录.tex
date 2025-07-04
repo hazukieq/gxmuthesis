@@ -1,8 +1,12 @@
 %推荐新开一页
 \newpage %不需要者请注释掉
 
+%===一页附录就需要写这两行代码===%
+%这里是附录标题，如 附录A
 \theAppend{附录A}
+%这里是设置图表公式题注的编号
 \theApppendRenumbering{A} %请传递字母,如附录A的字母A
+%===一页附录就需要写这两行代码===%
 
 \begin{figure}[h!]
 	\centering\rule{1cm}{1cm}
@@ -52,11 +56,18 @@
 	\caption{附录图片}
 \end{figure}
 
+
 %建议新开一页
 \newpage
 %附录B
+%===一页附录就需要写这两行代码===%
+%这里是附录标题，如 附录A
 \theAppend{附录B}
-\theApppendRenumbering{B} %请传递字母,如附录B的字母B
+%这里是设置图表公式题注的编号
+\theApppendRenumbering{B} %请传递字母,如附录A的字母A
+%===一页附录就需要写这两行代码===%
+
+
 这里是测试内容
 \section*{无序列表}
 \begin{itemize}
