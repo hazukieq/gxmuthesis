@@ -1,1 +1,11 @@
 *.pdf
+*.bbl
+*.blg
+*.toc
+*.run.xml
+*.bcf
+*.aux
+*.log
+*.txss2
+*.out
+*.synctex.gz 
