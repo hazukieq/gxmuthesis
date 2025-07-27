@@ -43,13 +43,13 @@ git clone https://github.com/hazukieq/gxmuthesis.git
 
 #### 使用入门
 
-1 下载压缩包者，请先解压，并记住相关位置；使用 `Git` 忽略该步骤
+一、下载压缩包者，请先解压，并记住相关位置；使用 `Git` 忽略该步骤
 
 
 
 
 
-2 打开文件夹，你需要重点关注以下文件夹：基础信息，论文主题，参考文献，论文致谢，手写签名。
+二、打开文件夹，你需要重点关注以下文件夹：基础信息，论文主题，参考文献，论文致谢，手写签名。
 
 ![image-20250703233339369](./图片/folders_shot.png)
 
@@ -71,11 +71,11 @@ git clone https://github.com/hazukieq/gxmuthesis.git
 
 
 
-3 按 **[基础信息.tex>论文.tex>参考文献.bib>致谢.tex>手写签名]** 步骤打开文件，并对内容进行修改。推荐每编辑一次，重新编译一次，确认相关改动是否符合。**⚠️注意：想要看到目录内容变更，需要编译两次！！！想要看到引用文献变更，请编译三次！！！**
+三、按 **[基础信息.tex>论文.tex>参考文献.bib>致谢.tex>手写签名]** 步骤打开文件，并对内容进行修改。推荐每编辑一次，重新编译一次，确认相关改动是否符合。**⚠️注意：想要看到目录内容变更，需要编译两次！！！想要看到引用文献变更，请编译三次！！！**
 
-4 编译完成后，在文件夹中会有**毕业论文.pdf**，请用阅读器打开查看效果。
+四、编译完成后，在文件夹中会有**毕业论文.pdf**，请用阅读器打开查看效果。
 
-5 仔细阅读 **[关于论文LaTeX的一些使用细节](./simple_tutorial.md)**
+五、仔细阅读 **[关于论文LaTeX的一些使用细节](./simple_tutorial.md)**
 
 
 
@@ -83,18 +83,34 @@ git clone https://github.com/hazukieq/gxmuthesis.git
 
 #### 本地编译
 
-- 先决条件：本地安装有 texlive，推荐安装 texlive2025
+- 先决条件：本地安装有 TexLive，推荐安装 TexLive2025
 
   同时，设置好 xelatex,bibtex,等的环境变量，确保终端或tex编辑器能够启用相关程序。
 
   [texlive介质下载推荐](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025-20250308.iso)
 
-- tex编辑器,如 texstudio等，或者notepad编辑后终端上编译也可
+- Tex 编辑器,如 [Texstudio](https://texstudio.sourceforge.net/) 等
 
-本地编译时，请只编译 **毕业论文.tex**(其会自动合并文件夹中的文件)，编译指令为:
+  TexStudio 配置：
+
+  请点击 选项>设置TexStudio>构建，勾选左下角的`显示高级选项`，右侧界面找到 `附加搜索路径`，用鼠标滚动选项找到 `命令($Path)`，将 Texlive 安装路径粘贴到 `命令($Path)`中去，多个路径需要加`:`。
+
+  <img src="./图片/texstudio_config.png" alt="留白过多" style="zoom:50%;border:1px black solid"/>
+
+- notepad(记事本) 编辑后终端上编译
+
+  - **注意**: Makefile 是终端上编译的脚本，请使用支持 Posix 规范的终端模拟器(cygwin,bash)
+    - Cygwin 安装时请选择附加组件 make，否则脚本运行不了
+    - Ubuntu 系统请安装 make： `sudo apt install make` 
+
+  - **终端编译指令**:
+
 
 ```bash
-xelatex 毕业论文.tex #请确认本地是否安装了 texlive
+make #请确认本地是否安装了 texlive
+make toc #编译目录
+make bibs #编译参考文献
+make help #获取帮助
 ```
 
 
