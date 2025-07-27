@@ -101,7 +101,6 @@ clean:
 	@echo "编译产物清理完毕"
 
 # 帮助信息
-.PHONY: help
 help:
 	@echo "使用说明:"
 	@echo "  make              编译 PDF 文件"
